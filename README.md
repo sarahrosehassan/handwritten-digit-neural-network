@@ -3,9 +3,9 @@
 Teaching a computer to **read handwritten digits** (0 to 9) with a small neural network built in Keras.
 Explained for developers who have never touched ML. If you can write a function, you can follow this.
 
-| 70,000 | 784 | 266,610 | 10 |
+| 60,000 + 10,000 | 784 | 266,610 | 10 |
 |:-:|:-:|:-:|:-:|
-| handwritten digits | pixels per image | learnable parameters | possible answers |
+| train + test digits | pixels per image | learnable parameters | possible answers |
 
 <sub>Data: the MNIST database of handwritten digits [[1]](#references), bundled with Keras. Model based on Géron's *Hands-On Machine Learning* [[2]](#references).</sub>
 
@@ -137,6 +137,17 @@ python docs/make_figures.py        # regenerates the concept images in this READ
 ```
 
 The script prints the test accuracy on 10,000 digits the network has never seen, and plots training vs validation accuracy for each epoch.
+
+### What running it looks like
+
+```
+60000 training images, 10000 test images, each 28x28 pixels
+Model: "sequential"
+... 20 epochs of training ...
+Test accuracy on 10,000 unseen digits: 97.5%
+```
+
+The 60,000 training images are what the network learns from; the 10,000 test images are new digits it never saw during training, used only to check it actually generalized. Two windows pop up: sample digits with their true labels, and test digits with the network's guesses.
 
 Built with [TensorFlow / Keras](https://keras.io), [NumPy](https://numpy.org) and [matplotlib](https://matplotlib.org).
 
