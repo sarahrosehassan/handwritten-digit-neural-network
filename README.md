@@ -70,7 +70,31 @@ model.fit(x_train, y_train, epochs=20)
 
 ### 1. Flatten: turn a picture into a list
 
-A dense layer expects a flat list of numbers, but each image is a 28 by 28 grid. `Flatten` lays the rows end to end, giving 784 numbers. Before that, every pixel is divided by 255 so values sit between 0 and 1, which keeps training stable.
+A computer can't see pictures, only numbers. A picture is a grid where **0 = white** and **1 = ink**. Here is a tiny 3 × 3 picture of the digit "1":
+
+```
+0  1  0
+0  1  0
+0  1  0
+```
+
+A dense layer can't read a grid. It needs **one long row** of numbers. `Flatten` unrolls the grid like a scarf, reading it **like a book**: left to right, top row first.
+
+```
+row 1    row 2    row 3
+0 1 0    0 1 0    0 1 0
+
+becomes:  0 1 0 0 1 0 0 1 0
+```
+
+Same numbers, same order every time, so each spot always means the same pixel (spot 1 is always the top-left corner). A smaller example:
+
+```
+1  0
+0  1      →     1 0 0 1
+```
+
+MNIST pictures are 28 × 28, so flattening gives **28 × 28 = 784** numbers. Before that, every pixel is divided by 255 so values sit between 0 and 1, which keeps training stable.
 
 ### 2. ReLU: let neurons switch on and off
 
