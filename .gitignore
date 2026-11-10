@@ -1,0 +1,8 @@
+# Environment
+.venv/
+__pycache__/
+.DS_Store
+
+# Course materials belong to the instructor; don't publish them
+*.pdf
+script_Sarah_Hassan.py
